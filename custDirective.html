@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+        <meta charset="utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body ng-app="myApp">
+
+<div ng-app="myApp">
+
+<div ng-controller="myCtrl">
+
+--HTML--
+Name: <input type='text' ng-model='name'> {{name}}
+Age: <input type='text' ng-model='age'> {{name}}
+<button ng-click='whatsMyname()' >Click Me!</button>
+<br><br>
+
+
+--Directive --
+<my-directive name="{{name}}" age="age" func="whatsMyname()"></my-directive>
+
+ 
+
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("myDirective", function() {
+
+  function linkFunction($scope, elem, attrs){
+
+       $scope.changeMyname = function(newName){
+        
+
+         $scope.name = newName;
+
+       }
+
+        
+
+  }
+
+
+    return {
+
+        restrict: "E",
+        link: linkFunction,
+        scope: {
+         name: '@',
+         age: '=',
+         func: '&'
+        },
+        template : "Name: <input type='text' ng-model='name'> <h1>{{name}}</h1>"+
+                   "Age: <input type='text' ng-model='age'> <h1>{{age}}</h1>"+
+                   "<button ng-click='func()'>Click Me!</button>"+
+                   "<input type='button' value='Link' ng-click='changeMyname(\"madhu\")' >"
+    };
+});
+
+
+app.controller("myCtrl", function($scope){
+
+  
+  $scope.name = "Madhusudhan";
+$scope.age = "12 years";
+
+
+$scope.whatsMyname = function(){
+
+   alert("Madhusudhan Srinivas");
+
+}
+
+});
+
+
+</script>
+
+</div>
+</div>
+
+</body>
+</html>

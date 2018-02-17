@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<input type="text" ng-model="braces">
+
+<button ng-click="myFunction();">Click me</button>
+
+ the braces  {{ name }} is {{status}}
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+   
+   
+
+    $scope.myFunction = function(){
+
+      var stack = [];
+
+
+       var paranthesis = $scope.braces;
+
+
+        for(var i =0; i < paranthesis.length; i++){
+
+
+          var currentBrace = paranthesis.charAt(i);
+
+         // alert(currentBrace);
+
+
+         if(['{','(','['].indexOf(currentBrace) >= 0){
+
+
+           stack.push(currentBrace);
+
+           //alert(stack);
+
+
+         } else if(['}',')',']'].indexOf(currentBrace) >= 0){
+
+             
+             var previous = stack.pop();
+
+             //alert(previous+"==>"+currentBrace);
+
+             if(currentBrace == '}' &&  previous == '{'){
+                 $scope.status = "balanced";
+
+             }  else if(currentBrace == ')' &&  previous == '('){
+                 $scope.status = "balanced";
+
+             }else if(currentBrace == ']' &&  previous == '['){
+                 $scope.status = "balanced";
+
+             } else {
+
+               $scope.status = "unbalanced";
+
+               break;
+
+             }
+
+ 
+         }
+
+
+    }
+
+
+    if(stack.length > 0){
+
+        $scope.status = "unbalanced";
+
+    }
+
+
+    
+
+        
+}
+
+
+
+
+
+});
+</script>
+
+</body>
+</html>

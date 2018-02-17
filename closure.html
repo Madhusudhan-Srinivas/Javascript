@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8"/>
+<body>
+
+<h2>Closure</h2>
+
+<script>
+
+
+function  SomeFunc(){
+
+ var counter = 0;
+
+ var increment = function(){
+
+    counter++;
+    alert(counter);
+ }
+
+ return {
+
+    increment
+
+ }
+
+}
+
+var x = SomeFunc();
+
+x.increment();
+x.increment();
+
+var y = SomeFunc();
+
+y.increment();
+
+
+</script>
+
+
+</body>
+</html> 

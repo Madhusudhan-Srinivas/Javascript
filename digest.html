@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+
+{{ randomNumber }}
+
+<input id="myBtn" type="button" value="Random Number">
+
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+   
+ $scope.randomNumber = Math.random();
+
+document.getElementById("myBtn").addEventListener("click", function(){
+
+
+$scope.randomNumber = Math.random();
+
+
+//$scope.$digest();
+
+$scope.$apply(function(){
+
+
+$scope.randomNumber = "hahahah";
+
+});
+
+});
+
+
+
+});
+</script>
+
+</body>
+</html>

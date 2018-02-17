@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+<script>
+
+
+function firstFunction() {
+
+ var count = 1;
+
+ var secondFunction = function(){
+
+    count++;
+    alert(count);
+
+ }
+
+
+return {
+   mYfunction: secondFunction
+}
+
+}
+
+
+var x = new firstFunction();
+
+x.mYfunction();
+x.mYfunction();
+
+var y = new firstFunction();
+
+y.mYfunction();
+
+</script>
+
+
+
+</body>
+</html>
